@@ -11,7 +11,7 @@ public class Main {
             Scanner sc = new Scanner(new File(f));
             String data = sc.nextLine();
             String[] arr = data.split(" ");
-            final HashMap<String, Integer> hMap = new HashMap<>();
+            static final HashMap<String, Integer> hMap = new HashMap<>();
             for (int i = 0; i < arr.length; i++) {
                 if (hMap.containsKey(arr[i])) {
                     int count = hMap.get(arr[i]);
