@@ -1,8 +1,6 @@
 package org.example;
 import java.io.File;
-import java.util.HashMap;
-import java.util.PriorityQueue;
-import java.util.Scanner;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -13,7 +11,7 @@ public class Main {
             Scanner sc = new Scanner(new File(f));
             String data = sc.nextLine();
             String[] arr = data.split(" ");
-            HashMap<String, Integer> hMap = new HashMap<>();
+            final HashMap<String, Integer> hMap = new HashMap<>();
             for (int i = 0; i < arr.length; i++) {
                 if (hMap.containsKey(arr[i])) {
                     int count = hMap.get(arr[i]);
@@ -26,13 +24,12 @@ public class Main {
             PriorityQueue<HashMap.Entry<String, Integer>> queue = new PriorityQueue<>((a, b) -> {
                 return b.getValue() - a.getValue();
             });
-            {
-                for (HashMap.Entry<String, Integer> e : hMap.entrySet()) {
+
+                for (Map.Entry<String, Integer> e : hMap.entrySet()) {
                     queue.add(e);
                 }
                 while (!queue.isEmpty()) {
                     l.log(Level.INFO,() ->"\n" + queue.poll());
                 }
-            }
         }
     }
